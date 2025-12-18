@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@env-dev/*": ["./core/dev/*"],
+      "@env-prod/*": ["./core/prod/*"],
+      "@env-logic/*": ["./core/dev/*"],
+      "@env-electron-dev/*": ["./electron/dev/*"],
+      "@env-electron-prod/*": ["./electron/prod/*"],
+      "@env-electron-logic/*": ["./electron/dev/*"],
+      "@/*": ["./electron/*"],
+      "@core/*": ["./core/*"],
+      "@native/*": ["./native/*"],
+      "@cli/*": ["./cli/*"],
+      "types/*": ["./types/*"]
+    }
+  }
+}

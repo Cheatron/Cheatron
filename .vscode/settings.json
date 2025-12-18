@@ -1,0 +1,17 @@
+{
+  "terminal.integrated.profiles.windows": {
+    "VS 2022 Dev Cmd": {
+      "path": "cmd.exe",
+      "args": [
+        "/k",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\Common7\\Tools\\VsDevCmd.bat"
+      ],
+      "icon": "terminal-cmd"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "VS 2022 Dev Cmd",
+  "cmake.buildDirectory": "${workspaceFolder}/native/build",
+  "cmake.sourceDirectory": "${workspaceFolder}/native",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

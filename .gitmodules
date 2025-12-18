@@ -1,0 +1,16 @@
+[submodule "native/submodules/capstone"]
+	path = native/submodules/capstone
+	url = https://github.com/capstone-engine/capstone
+	branch = v4
+[submodule "native/submodules/neptune"]
+	path = native/submodules/neptune
+	url = https://github.com/woldann/Neptune
+[submodule "native/submodules/nthread"]
+	path = native/submodules/nthread
+	url = https://github.com/woldann/NThread
+[submodule "native/submodules/nthreadosutils"]
+	path = native/submodules/nthreadosutils
+	url = https://github.com/woldann/NThreadOSUtils
+[submodule "native/submodules/nhook"]
+	path = native/submodules/nhook
+	url = https://github.com/woldann/NHook

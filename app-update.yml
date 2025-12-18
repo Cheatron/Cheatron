@@ -1,0 +1,5 @@
+provider: github
+owner: Cheatron
+repo: Cheatron
+releaseType: release
+updaterCacheDirName: cheatron-updater

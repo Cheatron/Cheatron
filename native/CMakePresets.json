@@ -1,0 +1,64 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 15,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "Default Config",
+      "description": "Default build configuration",
+      "binaryDir": "${sourceDir}/build"
+    },
+    {
+      "name": "linux-llvm",
+      "displayName": "Linux Cross-Compile LLVM",
+      "inherits": "default",
+      "generator": "Ninja Multi-Config",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      },
+      "toolchainFile": "${sourceDir}/cmake/llvm-toolchain.cmake"
+    },
+    {
+      "name": "windows-llvm",
+      "displayName": "Windows Native LLVM",
+      "inherits": "default",
+      "generator": "Visual Studio 17 2022",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "toolset": "ClangCL"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "build:linux:debug",
+      "configurePreset": "linux-llvm",
+      "configuration": "Debug"
+    },
+    {
+      "name": "build:linux:release",
+      "configurePreset": "linux-llvm",
+      "configuration": "Release"
+    },
+    {
+      "name": "build:win:debug",
+      "configurePreset": "windows-llvm",
+      "configuration": "Debug",
+      "verbose": true
+    },
+    {
+      "name": "build:win:release",
+      "configurePreset": "windows-llvm",
+      "configuration": "Release",
+      "verbose": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Setup NASM
+        uses: ilammy/setup-nasm@v1
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.21
+
+      - name: Decode Code Signing Certificate
+        shell: pwsh
+        run: |
+          $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.PFX_BASE64 }}")
+          $certificatePath = Join-Path -Path $env:RUNNER_TEMP -ChildPath "cert.pfx"
+          [IO.File]::WriteAllBytes($certificatePath, $pfx_cert_byte)
+          echo "CERT_PATH=$certificatePath" >> $env:GITHUB_ENV
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build & Publish Release
+        run: bun run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
+          # GH_TOKEN is required by electron-builder to create the release and upload assets
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # Code Signing Secrets
+          CSC_LINK: ${{ env.CERT_PATH }}
+          CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}

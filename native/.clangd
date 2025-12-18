@@ -1,0 +1,20 @@
+CompileFlags:
+  CompilationDatabase: 'build'
+  # Support both Clang and Clang-CL mode by ignoring some MSVC-specific warnings
+  Add: [-Wno-unknown-pragmas, -Wno-microsoft-include, -Wno-msvc-not-found]
+
+Index:
+  Background: Build
+
+Diagnostics:
+  UnusedIncludes: Strict
+  MissingIncludes: Strict
+
+Hover:
+  ShowAKA: true
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true
+  DeducedTypes: true
+  Designators: true

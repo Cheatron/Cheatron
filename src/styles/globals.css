@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+
+/* ===========================
+   Theme Variables (shadcn-ui)
+   =========================== */
+
+@layer base {
+  :root {
+    --color-background: 0 0% 100%;
+    --color-foreground: 222.2 84% 4.9%;
+    --color-card: 0 0% 100%;
+    --color-card-foreground: 222.2 84% 4.9%;
+    --color-popover: 0 0% 100%;
+    --color-popover-foreground: 222.2 84% 4.9%;
+    --color-primary: 221.2 83.2% 53.3%;
+    --color-primary-foreground: 210 40% 98%;
+    --color-secondary: 210 40% 96.1%;
+    --color-secondary-foreground: 222.2 47.4% 11.2%;
+    --color-muted: 210 40% 96.1%;
+    --color-muted-foreground: 215.4 16.3% 46.9%;
+    --color-accent: 210 40% 96.1%;
+    --color-accent-foreground: 222.2 47.4% 11.2%;
+    --color-destructive: 0 84.2% 60.2%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 214.3 31.8% 91.4%;
+    --color-input: 214.3 31.8% 91.4%;
+    --color-ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --color-background: 222.2 84% 4.9%;
+    --color-foreground: 210 40% 98%;
+    --color-card: 222.2 84% 4.9%;
+    --color-card-foreground: 210 40% 98%;
+    --color-popover: 222.2 84% 4.9%;
+    --color-popover-foreground: 210 40% 98%;
+    --color-primary: 217.2 91.2% 59.8%;
+    --color-primary-foreground: 222.2 47.4% 11.2%;
+    --color-secondary: 217.2 32.6% 17.5%;
+    --color-secondary-foreground: 210 40% 98%;
+    --color-muted: 217.2 32.6% 17.5%;
+    --color-muted-foreground: 215 20.2% 65.1%;
+    --color-accent: 217.2 32.6% 17.5%;
+    --color-accent-foreground: 210 40% 98%;
+    --color-destructive: 0 62.8% 30.6%;
+    --color-destructive-foreground: 210 40% 98%;
+    --color-border: 217.2 32.6% 17.5%;
+    --color-input: 217.2 32.6% 17.5%;
+    --color-ring: 224.3 76.3% 48%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Blue (default)
+     ============================================ */
+  .theme-blue {
+    --color-primary: 221.2 83.2% 53.3%;
+    --color-ring: 221.2 83.2% 53.3%;
+  }
+
+  .theme-blue.dark {
+    --color-primary: 217.2 91.2% 59.8%;
+    --color-ring: 224.3 76.3% 48%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Violet
+     ============================================ */
+  .theme-violet {
+    --color-primary: 258 90% 66%;
+    --color-ring: 258 90% 66%;
+  }
+
+  .theme-violet.dark {
+    --color-primary: 263 70% 50%;
+    --color-ring: 263 70% 50%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Green
+     ============================================ */
+  .theme-green {
+    --color-primary: 142 76% 36%;
+    --color-ring: 142 76% 36%;
+  }
+
+  .theme-green.dark {
+    --color-primary: 142 71% 45%;
+    --color-ring: 142 71% 45%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Rose
+     ============================================ */
+  .theme-rose {
+    --color-primary: 346 77% 50%;
+    --color-ring: 346 77% 50%;
+  }
+
+  .theme-rose.dark {
+    --color-primary: 346 77% 60%;
+    --color-ring: 346 77% 60%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Orange
+     ============================================ */
+  .theme-orange {
+    --color-primary: 24 95% 53%;
+    --color-ring: 24 95% 53%;
+  }
+
+  .theme-orange.dark {
+    --color-primary: 20 91% 48%;
+    --color-ring: 20 91% 48%;
+  }
+
+  /* ============================================
+     COLOR THEMES - Slate
+     ============================================ */
+  .theme-slate {
+    --color-primary: 215 20% 40%;
+    --color-ring: 215 20% 40%;
+  }
+
+  .theme-slate.dark {
+    --color-primary: 215 20% 65%;
+    --color-ring: 215 20% 65%;
+  }
+}
+
+/* ===========================
+   Base Styles
+   =========================== */
+
+@layer base {
+  * {
+    border-color: hsl(var(--color-border));
+  }
+
+  body {
+    background-color: hsl(var(--color-background));
+    color: hsl(var(--color-foreground));
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--color-muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--color-muted-foreground) / 0.3);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--color-muted-foreground) / 0.5);
+  }
+}

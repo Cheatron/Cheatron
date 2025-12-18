@@ -1,0 +1,25 @@
+{
+  "name": "cheatron-native",
+  "version": "1.0.0",
+  "description": "Native C++ module for Cheatron",
+  "main": "index.cjs",
+  "files": [
+    "index.cjs",
+    "index.d.ts",
+    "build/*.node",
+    "build/Release/*.node",
+    "build/Debug/*.node"
+  ],
+  "scripts": {
+    "install": "bun run configure",
+    "configure:linux": "cmake --preset linux-llvm",
+    "configure:win": "cmake --preset windows-llvm",
+    "configure": "bun -e \"const s = process.platform === 'win32' ? 'win' : 'linux'; process.exit(require('child_process').spawnSync('bun', ['run', 'configure:' + s], { stdio: 'inherit' }).status ?? 0)\"",
+    "build:debug": "cmake --build build --config Debug",
+    "build:release": "cmake --build build --config Release",
+    "build": "bun run build:debug"
+  },
+  "dependencies": {
+    "node-addon-api": "^8.5.0"
+  }
+}

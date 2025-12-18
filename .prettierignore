@@ -1,0 +1,10 @@
+/dist
+/release
+node_modules
+coverage
+*.log
+/dist-electron
+/native
+electron-builder.json5
+src/components/ui/
+

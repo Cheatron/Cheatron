@@ -1,0 +1,28 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
+
+    /* Path Aliases */
+    "paths": {
+      "electron": ["./node_modules/electron"],
+      "@/*": ["./src/*"],
+      "@core/*": ["./core/*"],
+      "@native/*": ["./native/*"],
+      "types/*": ["./types/*"]
+    }
+  },
+  "include": ["src", "types", "tests"],
+  "exclude": ["scripts", "native", "core", "node_modules"]
+}

@@ -1,0 +1,440 @@
+@import 'tailwindcss';
+
+@plugin "tailwindcss-animate";
+
+/* ===========================
+   Theme Variables
+   =========================== */
+
+@layer base {
+  :root {
+    --radius: 0.625rem;
+
+    /* Base colors */
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 215.4 16.3% 40%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 85%;
+    --input: 214.3 31.8% 85%;
+    --ring: 221.2 83.2% 53.3%;
+
+    /* Chart colors */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+
+    /* Chart colors dark */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+/* ===========================
+   Color Themes (outside @layer)
+   =========================== */
+
+/* Blue (default) */
+.theme-blue {
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 221.2 83.2% 53.3%;
+  --secondary: 221.2 85% 88%;
+  --secondary-foreground: 221.2 60% 24%;
+  --accent: 221.2 88% 92%;
+  --accent-foreground: 221.2 55% 20%;
+}
+
+.theme-blue.dark {
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 224.3 76.3% 58%;
+  --secondary: 217.2 32.6% 22%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 224.3 76.3% 60%;
+  --accent-foreground: 210 40% 98%;
+}
+
+/* Violet */
+.theme-violet {
+  --primary: 258 90% 66%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 258 90% 66%;
+  --secondary: 258 78% 89%;
+  --secondary-foreground: 260 55% 24%;
+  --accent: 258 82% 92%;
+  --accent-foreground: 258 58% 20%;
+}
+
+.theme-violet.dark {
+  --primary: 263 70% 60%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 263 70% 70%;
+  --secondary: 270 40% 24%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 263 70% 68%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* Green */
+.theme-green {
+  --primary: 142 76% 36%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 142 76% 36%;
+  --secondary: 142 58% 86%;
+  --secondary-foreground: 145 38% 22%;
+  --accent: 142 64% 90%;
+  --accent-foreground: 142 44% 18%;
+}
+
+.theme-green.dark {
+  --primary: 142 71% 50%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 142 71% 60%;
+  --secondary: 140 30% 24%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 142 71% 58%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* Rose */
+.theme-rose {
+  --primary: 346 77% 50%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 346 77% 50%;
+  --secondary: 346 74% 88%;
+  --secondary-foreground: 346 55% 22%;
+  --accent: 346 82% 92%;
+  --accent-foreground: 346 58% 22%;
+}
+
+.theme-rose.dark {
+  --primary: 346 77% 65%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 346 77% 75%;
+  --secondary: 340 38% 24%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 346 77% 72%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* Orange */
+.theme-orange {
+  --primary: 24 95% 53%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 24 95% 53%;
+  --secondary: 24 88% 88%;
+  --secondary-foreground: 24 55% 24%;
+  --accent: 24 92% 92%;
+  --accent-foreground: 24 55% 22%;
+}
+
+.theme-orange.dark {
+  --primary: 20 91% 58%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 20 91% 68%;
+  --secondary: 20 46% 24%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 20 91% 64%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* Slate */
+.theme-slate {
+  --primary: 215 20% 45%;
+  --primary-foreground: 210 40% 98%;
+  --ring: 215 20% 45%;
+  --secondary: 215 26% 84%;
+  --secondary-foreground: 220 22% 24%;
+  --accent: 215 24% 88%;
+  --accent-foreground: 220 20% 26%;
+}
+
+.theme-slate.dark {
+  --primary: 215 20% 70%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --ring: 215 20% 80%;
+  --secondary: 215 26% 22%;
+  --secondary-foreground: 210 40% 96%;
+  --accent: 215 22% 68%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+}
+
+/* System (dynamic accent color from OS) */
+.theme-system {
+  --primary: var(--system-light-primary, 221.2 83.2% 53.3%);
+  --primary-foreground: var(--system-light-primary-foreground, 210 40% 98%);
+  --ring: var(--system-light-ring, 221.2 83.2% 53.3%);
+  --secondary: var(--system-light-secondary, 210 40% 96.1%);
+  --secondary-foreground: var(--system-light-secondary-foreground, 222.2 47.4% 11.2%);
+  --accent: var(--system-light-accent, 210 40% 96.1%);
+  --accent-foreground: var(--system-light-accent-foreground, 222.2 47.4% 11.2%);
+}
+
+.theme-system.dark {
+  --primary: var(--system-dark-primary, 217.2 91.2% 59.8%);
+  --primary-foreground: var(--system-dark-primary-foreground, 222.2 47.4% 11.2%);
+  --ring: var(--system-dark-ring, 224.3 76.3% 48%);
+  --secondary: var(--system-dark-secondary, 217.2 32.6% 17.5%);
+  --secondary-foreground: var(--system-dark-secondary-foreground, 210 40% 98%);
+  --accent: var(--system-dark-accent, 217.2 32.6% 17.5%);
+  --accent-foreground: var(--system-dark-accent-foreground, 210 40% 98%);
+}
+
+.system-accent-swatch {
+  background-color: hsl(var(--system-light-primary, var(--primary)));
+  background-image: linear-gradient(
+    135deg,
+    hsl(var(--system-light-primary, var(--primary))) 0%,
+    hsl(var(--system-light-ring, var(--primary))) 100%
+  );
+}
+
+.dark .system-accent-swatch {
+  background-color: hsl(var(--system-dark-primary, var(--primary)));
+  background-image: linear-gradient(
+    135deg,
+    hsl(var(--system-dark-primary, var(--primary))) 0%,
+    hsl(var(--system-dark-ring, var(--primary))) 100%
+  );
+}
+
+/* ===========================
+   Base Styles
+   =========================== */
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  /* Disable transitions on initial load */
+  .disable-transitions * {
+    transition: none !important;
+  }
+
+  html {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      Arial,
+      sans-serif;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    min-height: 100vh;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.3);
+    border-radius: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+/* ===========================
+   Dynamic Theme Utilities
+   Force Tailwind to use CSS variables at runtime
+   =========================== */
+
+@layer utilities {
+  /* Background colors */
+  .bg-primary {
+    background-color: hsl(var(--primary)) !important;
+  }
+
+  .bg-primary\/90 {
+    background-color: hsl(var(--primary) / 0.9) !important;
+  }
+
+  .bg-primary\/50 {
+    background-color: hsl(var(--primary) / 0.5) !important;
+  }
+
+  .bg-primary\/20 {
+    background-color: hsl(var(--primary) / 0.2) !important;
+  }
+
+  .bg-primary\/10 {
+    background-color: hsl(var(--primary) / 0.1) !important;
+  }
+
+  .bg-primary\/5 {
+    background-color: hsl(var(--primary) / 0.05) !important;
+  }
+
+  .bg-secondary {
+    background-color: hsl(var(--secondary)) !important;
+  }
+
+  .bg-secondary\/90 {
+    background-color: hsl(var(--secondary) / 0.9) !important;
+  }
+
+  .bg-secondary\/10 {
+    background-color: hsl(var(--secondary) / 0.1) !important;
+  }
+
+  .bg-secondary\/20 {
+    background-color: hsl(var(--secondary) / 0.2) !important;
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background)) !important;
+  }
+
+  .bg-card {
+    background-color: hsl(var(--card)) !important;
+  }
+
+  .bg-popover {
+    background-color: hsl(var(--popover)) !important;
+  }
+
+  /* Text colors */
+  .text-primary {
+    color: hsl(var(--primary)) !important;
+  }
+
+  .text-primary-foreground {
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  .text-secondary-foreground {
+    color: hsl(var(--secondary-foreground)) !important;
+  }
+
+  /* Border colors */
+  .border-primary {
+    border-color: hsl(var(--primary)) !important;
+  }
+
+  .border-primary\/50 {
+    border-color: hsl(var(--primary) / 0.5) !important;
+  }
+
+  .border-primary\/20 {
+    border-color: hsl(var(--primary) / 0.2) !important;
+  }
+
+  .border-primary\/30 {
+    border-color: hsl(var(--primary) / 0.3) !important;
+  }
+
+  /* Ring colors */
+  .ring-ring {
+    --tw-ring-color: hsl(var(--ring)) !important;
+  }
+
+  /* Hover states */
+  .hover\:bg-primary:hover {
+    background-color: hsl(var(--primary)) !important;
+  }
+
+  .hover\:bg-primary\/90:hover {
+    background-color: hsl(var(--primary) / 0.9) !important;
+  }
+
+  .hover\:bg-primary\/20:hover {
+    background-color: hsl(var(--primary) / 0.2) !important;
+  }
+
+  .hover\:bg-secondary\/90:hover {
+    background-color: hsl(var(--secondary) / 0.9) !important;
+  }
+
+  .hover\:border-primary\/50:hover {
+    border-color: hsl(var(--primary) / 0.5) !important;
+  }
+
+  .hover\:text-primary-foreground:hover {
+    color: hsl(var(--primary-foreground)) !important;
+  }
+
+  /* Memory Highlight Class */
+  .memory-highlight {
+    background-color: hsl(var(--primary) / 0.25);
+    color: hsl(var(--primary));
+    font-weight: 800;
+    box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.6);
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.5);
+    will-change: background-color, color;
+    transform: translateZ(0); /* Force GPU layer */
+  }
+}

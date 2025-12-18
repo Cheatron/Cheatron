@@ -1,0 +1,56 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules/
+dist/
+dist-electron/
+dist-types/
+release/
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# TypeScript Build Info
+*.tsbuildinfo
+
+# Agent files
+.agent/
+!AGENTS.md
+GEMINI.md
+.github/copilot-instructions.md
+
+# Cache
+.cache/
+!.cache/electron-version.json
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+*.ninja
+*.ninja_deps
+*.ninja_log

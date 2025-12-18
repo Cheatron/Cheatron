@@ -1,0 +1,6 @@
+import './globals/global-pre'
+import './globals/global-logger'
+import '@env-logic/global-pre'
+import './globals/preinit'
+import '@env-logic/core'
+import '@core/globals/init'

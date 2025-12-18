@@ -1,0 +1,71 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  $schema: 'https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json',
+  appId: 'com.cheatron.app',
+  asar: true,
+  productName: 'Cheatron',
+  copyright: 'Copyright (C) 2025-2026 Serkan Aksoy',
+  directories: {
+    output: 'release/${version}',
+  },
+  icon: 'public/cheatron',
+  publish: [
+    {
+      provider: 'github',
+      owner: 'Cheatron',
+      repo: 'Cheatron',
+      releaseType: 'release',
+    },
+  ],
+  files: [
+    {
+      from: '.',
+      to: '',
+      filter: [
+        'dist/**',
+        'dist-electron/**',
+        '!dist-electron/**/*.map',
+        '!package.json',
+        '!package-lock.json',
+        '!bun.lock',
+        '!node_modules',
+      ],
+    },
+  ],
+  // Keep the auto-update config outside of app.asar so electron-updater can read it directly
+  extraResources: [
+    {
+      from: 'app-update.yml',
+      to: 'app-update.yml',
+    },
+  ],
+  // Include signed native module in the application root
+  extraFiles: [
+    {
+      from: 'native/build/cheatron-native.node',
+      to: 'cheatron-native.node',
+    },
+  ],
+  win: {
+    target: [
+      {
+        target: 'nsis',
+        arch: ['x64'],
+      },
+    ],
+    artifactName: '${productName}-Windows-${version}-Setup.${ext}',
+    signtoolOptions: {
+      timeStampServer: 'http://timestamp.sectigo.com',
+      rfc3161TimeStampServer: 'http://timestamp.sectigo.com',
+    },
+  },
+  nsis: {
+    license: 'LICENSE', // MIT License as EULA
+    oneClick: false,
+    perMachine: false,
+    allowToChangeInstallationDirectory: true,
+    deleteAppDataOnUninstall: false,
+    differentialPackage: true,
+  },
+}
+ 

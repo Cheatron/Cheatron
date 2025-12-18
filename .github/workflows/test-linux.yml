@@ -1,0 +1,45 @@
+name: Test Linux
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+
+concurrency:
+  group: test-linux-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Install System Dependencies
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends llvm lld clang mingw-w64 nasm wine wine32 wine64 libwine
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Quality Checks
+        run: |
+          bun run lint
+          bun run tsc -b
+          bun run test
+        env:
+          CI: true
+
+      - name: Build Application (Windows Cross-Compile)
+        run: bun run build:never-publish

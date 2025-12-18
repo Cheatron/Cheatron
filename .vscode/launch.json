@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debug: Attach (Full Stack)",
+      "configurations": ["Debug: Attach to Main", "Debug: Renderer Process"],
+      "stopAll": false
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Debug: Launch & Attach (Recommended)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["run", "dev:debug"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "serverReadyAction": {
+        "pattern": "Local:.*http://localhost:([0-9]+)",
+        "action": "startDebugging",
+        "name": "Debug: Renderer Process"
+      }
+    },
+    {
+      "name": "Debug: Attach to Main",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/dist-electron/**/*.mjs"],
+      "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"]
+    },
+    {
+      "name": "Debug: Renderer Process",
+      "type": "chrome",
+      "request": "attach",
+      "port": 9222,
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "presentation": {
+        "hidden": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Ignore native build artifacts
+.cache
+build/
+include/node/
