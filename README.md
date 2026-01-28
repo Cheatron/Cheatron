@@ -10,6 +10,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript)](https://typescriptlang.org)
 [![Bun](https://img.shields.io/badge/Bun-1.2-f9f1e1?logo=bun)](https://bun.sh)
 
+<br />
+<br />
+<img src="public/cheatron.gif" alt="Cheatron Demo" width="800">
+
 </div>
 
 ---
